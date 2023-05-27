@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.center {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@import './components/Header/Header';
+@import './components/Fancy/Fancy';
+@import './components/ItemListContainer/ItemListContainer';
+@import './components/Footer/Footer';
+
