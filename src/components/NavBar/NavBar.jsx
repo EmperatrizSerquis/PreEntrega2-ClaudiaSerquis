@@ -11,10 +11,11 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import myLogo from '/logo.svg';
 import Link from '@mui/material/Link';
-import blackLogo from '/light-black.svg'
+import blackLogo from '/light-black.svg';
+import CartWidget from "../CartWidget/CartWidget";
+
 
 const pages = ['Products', 'About', 'Blog'];
 const settings = ['Cart', 'Account', 'SignIn', 'Logout'];
@@ -42,7 +43,9 @@ function ResponsiveAppBar() {
     
     <AppBar position="static" className="appbar" color="transparent">
       <Container maxWidth="xl">
+      
         <Toolbar disableGutters>          
+
           <Link href="#"><img src={myLogo} className="header__logo" alt="Light logo" /></Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -79,9 +82,10 @@ function ResponsiveAppBar() {
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
+              
             </Menu>
           </Box>
-
+          
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -93,12 +97,14 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-
+          <CartWidget />
           <Box sx={{ flexGrow: 0 }}>
+          
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={blackLogo} />
+                <Avatar alt="Light" src={blackLogo} />
               </IconButton>
+              
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}

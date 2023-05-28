@@ -1,5 +1,5 @@
 import './styles/styles.scss'
-import Header from "./components/Header/Header"
+import NavBar from "./components/NavBar/NavBar"
 import Fancy from "./components/Fancy/Fancy"
 import Button from "./components/Button/Button"
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
@@ -12,7 +12,7 @@ function App() {
   return (
         
       <div>        
-        <Header />
+        <NavBar />        
         <Fancy />
         <Button />    
         <ItemListContainer producto="Led" />  
