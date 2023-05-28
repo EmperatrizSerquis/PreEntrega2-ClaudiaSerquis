@@ -22,7 +22,8 @@ img {
     height: auto;
 }
 
-@import './components/Header/Header';
+@import './components/NavBar/NavBar';
+@import './components/CartWidget/CartWidget';
 @import './components/Fancy/Fancy';
 @import './components/ItemListContainer/ItemListContainer';
 @import './components/Footer/Footer';

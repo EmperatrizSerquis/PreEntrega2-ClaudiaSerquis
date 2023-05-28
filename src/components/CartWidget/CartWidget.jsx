@@ -1,12 +1,12 @@
-import IconButton from '@mui/material/IconButton';
+import Badge from '@mui/material/Badge';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
 export default function CartWidget() {
     return (
-        <IconButton
-        size="large" 
-      >
-        <ShoppingCartCheckoutIcon />
-      </IconButton>
+        <div className="cart">
+            <Badge badgeContent={4} color="secondary">
+                <ShoppingCartCheckoutIcon color="action" />
+            </Badge>           
+        </div>
     );
   }
