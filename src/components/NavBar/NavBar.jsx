@@ -12,15 +12,14 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import myLogo from '/logo.svg';
-import Link from '@mui/material/Link';
 import blackLogo from '/light-black.svg';
 import CartWidget from "../CartWidget/CartWidget";
+import { Link } from 'react-router-dom';
 
-
-const pages = ['Products', 'About', 'Blog'];
+const pages = ['products', 'about', 'contact'];
 const settings = ['Cart', 'Account', 'SignIn', 'Logout'];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar({ show,  handleShow }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -46,7 +45,7 @@ function ResponsiveAppBar() {
       
         <Toolbar disableGutters>          
 
-          <Link href="#"><img src={myLogo} className="header__logo" alt="Light logo" /></Link>
+          <Link to={`/`}><img src={myLogo} className="header__logo" alt="Light logo" /></Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -79,7 +78,9 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">
+                    <Link to={`/${page}`}>{page}</Link>
+                  </Typography>
                 </MenuItem>
               ))}
               
@@ -93,11 +94,11 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: '#000', display: 'block' }}
               >
-                {page}
+                <Link to={`/${page}`}>{page}</Link>
               </Button>
             ))}
           </Box>
-          <CartWidget />
+          <CartWidget  />
           <Box sx={{ flexGrow: 0 }}>
           
             <Tooltip title="Open settings">

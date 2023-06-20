@@ -11,13 +11,13 @@ const Fancy = () => {
                     <img src={lightLogo} className="logo" alt="Light logo" />
                 </a>
                 <a href="https://github.com/mui/material-ui/" target="_blank">
-                    <img src={blackLogo} className="logo light" alt="Light logo" />
+                    <img src={blackLogo} className="logo light" alt="Black logo" />
                 </a>
             
                 <h1>LED LIGHTS FOR LIFE</h1>
             
                 <p className="read-the-docs">
-                Wait for new Features
+                    Look to our Products
                 </p>
             </div>
         </section>

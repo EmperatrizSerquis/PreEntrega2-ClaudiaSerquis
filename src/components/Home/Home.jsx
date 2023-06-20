@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react'
 import { getData } from '../../helpers/getData'
 import { useParams } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
+import Fancy from "../Fancy/Fancy"
+import Banner from "../Banner/Banner"
+import ServicesListContainer from "../ServicesListContainer/ServicesListContainer"
 
-const ItemListContainer = (limit) => {
+const Home = () => {
 
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
@@ -32,17 +35,23 @@ const ItemListContainer = (limit) => {
     const list = search
                         ? products.filter(prod => prod.name.includes(search))
                         : products
+    const limit = 4
+    const title = "Featured Products"
 
     return (
-        <div className="container">
+        <div>
+            <Fancy />
+            <Banner />    
+            <ServicesListContainer />
+                       
             {
                 loading
-                    ? <h2 className="capitalize">Loading...</h2>
-                    : <ItemList items={list} title={categoryId} />
+                    ? <h2>Loading...</h2>
+                    : <ItemList items={list} limit={limit} title={title} />
             }
         </div>
     )
 }
 
-export default ItemListContainer
+export default Home
 
