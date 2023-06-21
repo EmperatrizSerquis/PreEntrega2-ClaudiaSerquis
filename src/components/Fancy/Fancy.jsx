@@ -1,5 +1,6 @@
 import lightLogo from '/light.svg'
 import blackLogo from '/light-black.svg'
+import { Link } from "react-router-dom"
 
 
 const Fancy = () => {
@@ -7,12 +8,12 @@ const Fancy = () => {
     return (
         <section>
             <div className="center">
-                <a href="https://mui.com/" target="_blank">
-                    <img src={lightLogo} className="logo" alt="Light logo" />
-                </a>
-                <a href="https://github.com/mui/material-ui/" target="_blank">
-                    <img src={blackLogo} className="logo light" alt="Black logo" />
-                </a>
+                <Link to={`/products`} target="_blank">
+                    <img src={lightLogo} className="logo" alt="Light logo Shop" />
+                </Link>
+                <Link to={`/`} target="_blank">
+                    <img src={blackLogo} className="logo light" alt="Black logo Home" />
+                </Link>
             
                 <h1>LED LIGHTS FOR LIFE</h1>
             

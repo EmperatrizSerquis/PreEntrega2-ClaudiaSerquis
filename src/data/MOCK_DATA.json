@@ -9,7 +9,7 @@
         "price": 997,
         "img": "https://www.electromisiones.com.ar/25668-large_default/lampara_led_macroled_gota_vintage_4w_e14_480lm_2700_k.webp",
         "category": "lamps",
-        "stock": 90,
+        "stock": 10,
         "power": "4W",
         "tone": "Luz Cálida 2700"
     },
@@ -35,7 +35,7 @@
         "price": 18000,
         "img": "https://www.electromisiones.com.ar/15191-large_default/aro_led_tbcin_con_tripode_de_piso_12w_2a_5vcc_dimerizable.webp",
         "category": "aros",
-        "stock": 90,
+        "stock": 10,
         "power": "4W",
         "tone": ["Luz Cálida 3000", "Luz Natural 4500", "Luz Día 4500"]
     },
@@ -61,7 +61,7 @@
         "price": 1600,
         "img": "https://www.electromisiones.com.ar/20697-large_default/cinta_led_60_flexible_luz_dia_48w_x_metro.webp",
         "category": "tiras",
-        "stock": 90,
+        "stock": 5,
         "power": "16W",
         "tone": "Luz Fría"
     },
@@ -74,7 +74,7 @@
         "price": 5600,
         "img": "https://dummyimage.com/200x200/000/fff",
         "category": "tiras",
-        "stock": 90,
+        "stock": 5,
         "power": "12W",
         "tone": "Luz Cálida"
     },
@@ -87,7 +87,7 @@
         "price": 30100,
         "img": "https://www.electromisiones.com.ar/16380-large_default/set_cinta_led_tbcin_rgb_audioritmica_144w12vcc_fuente_controaldor_ip20.webp",
         "category": "tiras",
-        "stock": 90,
+        "stock": 5,
         "power": "14.4W",
         "tone": "Luz RGB + Luz Cálida"
     },
@@ -100,7 +100,7 @@
         "price": 1800,
         "img": "https://www.electromisiones.com.ar/25769-large_default/lampara_led_macroled_highpower_bulbon_30w_3000lm_e27_3000k_luz_calida.webp",
         "category": "lamps",
-        "stock": 50,
+        "stock": 5,
         "power": "30W",
         "tone": "Luz Cálida 3000"
     }
