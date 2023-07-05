@@ -1,9 +1,7 @@
-import * as React from 'react';
-import { useState, useEffect } from "react"
+import { useEffect } from 'react'
 
 
-const ItemCount = ({ stock, quantity = Number(localStorage.getItem('quantity')) || 0, setQuantity,  handleAdd }) => {
-
+const ItemCount = ({ stock, quantity, setQuantity,  handleAdd }) => {
 
     const handlePlus = () => {       
         quantity < stock && setQuantity(quantity + 1)
@@ -20,10 +18,12 @@ const ItemCount = ({ stock, quantity = Number(localStorage.getItem('quantity')) 
 
     return (
         <div className="counter">
-            <button onClick={handleLess} className="btn btn-action">-</button>
+            <button onClick={handleLess} className={quantity === 1 ? "btn btn-action" : "btn btn-shop"} disabled={quantity === 1}>-</button>
+           {/*  VER COMO QUEDA CON BACKTICKS CLASE MIN 1.30 */}
+
             <span className="num">{quantity}</span>
-            <button onClick={handlePlus} className="btn btn-action">+</button>
-            <button onClick={handleAdd}  className="btn btn-action">Add to Cart</button>
+            <button onClick={handlePlus} className="btn btn-action" disabled={quantity === stock}>+</button>
+            <button onClick={handleAdd}  className={quantity === stock ? "btn btn-action" : "btn btn-shop"} >Add to Cart</button>
         </div>
     )
 }

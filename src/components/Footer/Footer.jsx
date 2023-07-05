@@ -1,5 +1,5 @@
 import lightLogo from '/light.svg'
-
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     
@@ -23,16 +23,16 @@ const Footer = () => {
                     <h4>Our Links</h4>
                     <ul>
                         <li className="footer__link">
-                        <a href="#home">Home</a>
+                            <Link  to={"/"}>Home</Link>
                         </li>
                         <li className="footer__link">
-                        <a href="#about">About Us</a>
+                        <Link  to={"/about"}>About Us</Link>
                         </li>
                         <li className="footer__link">
-                        <a href="#">Products</a>
+                        <Link  to={"/contact"}>Contact</Link>
                         </li>
                         <li className="footer__link">
-                        <a href="#blog">Blog</a>
+                        <Link  to={"/register"}>Register</Link>
                         </li>
                     </ul>
                 </div>

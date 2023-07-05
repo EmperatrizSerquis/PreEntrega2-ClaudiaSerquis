@@ -1,10 +1,10 @@
-
 import { useState, useEffect } from 'react'
-import { getData } from '../../helpers/getData'
+import Loader from '../Loader/Loader'
 import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import CategoryList from "../CategoryList/CategoryList"
-import ServicesListContainer from "../ServicesListContainer/ServicesListContainer"
+import { doc, getDoc} from 'firebase/firestore'
+import { db } from '../../firebase/config'
 
 const ItemDetailContainer = () => {
 
@@ -12,27 +12,33 @@ const ItemDetailContainer = () => {
     const [loading, setLoading] = useState(true)
     const { itemId } = useParams()
 
-
     useEffect(() => {
         setLoading(true)
 
-        getData()
-            .then((res) => {
-                setItem(res.find((prod) => prod.id === Number(itemId)))
+        const itemRef = doc(db, "products", itemId)
+
+        getDoc(itemRef)
+
+            .then((doc) => {
+
+                setItem({
+                    ...doc.data(),
+                    id: doc.id
+                })
             })
             .catch((err) => console.log(err))
             .finally(() => setLoading(false))
+
     }, [itemId])
 
     return (
-        <div className="container my-5">
+        <div className="container">
             <CategoryList />
            {
             loading 
-                ? <h2>Loading...</h2>
+                ? <Loader/>
                 : <ItemDetail {...item}/>
            }
-            <ServicesListContainer />
         </div>
     )
 }

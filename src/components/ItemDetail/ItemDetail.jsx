@@ -1,12 +1,15 @@
-import { useState } from "react"
+import { useState, useContext, useMemo } from "react"
 import ItemCount from "../ItemCount/ItemCount"
 import { Link, useNavigate } from "react-router-dom"
-
-
+import { CartContext } from "../../context/CartContext"
 
 const ItemDetail = ({id, name, code, description, brand, price, img, category, stock, power, tone }) => {
 
-    const [quantity, setQuantity] = useState(0)
+    const { addToCart, isInCart } = useContext(CartContext)
+
+    const qSave = Number(localStorage.getItem('counter')) || 1
+
+    const [quantity, setQuantity] = useState(qSave)
 
     const navigate = useNavigate()
 
@@ -22,16 +25,17 @@ const ItemDetail = ({id, name, code, description, brand, price, img, category, s
             category,
             stock, 
             power,
-            tone
-            
+            tone,
+            quantity            
         }
-        console.log(item)
+        addToCart(item)
     }
 
-    
     const handleBack = () => {
         navigate(-1)
     }
+
+ /*    const myDate = useMemo(() => new Date().toLocaleString(), [quantity]) */
 
 
     return (
@@ -44,38 +48,49 @@ const ItemDetail = ({id, name, code, description, brand, price, img, category, s
                         <img src={img} width="700" height="700" loading="lazy"
                         alt={name} className="w-100" />
                     </figure>
+                    {/* <h4>{myDate}</h4> */}
                 </div>
+                
                 <div className="product__detail__content">
                     <h3 className="product__title">{name}</h3>
                     <h4> CATEGORY: <span> {category} </span> </h4>
+                    {stock <= 10 && <p style={{fontWeight:700, color:'#9c27b0'}}>Only: {stock} items!</p>}
+                    
                     <h4> IN STOCK: <span> {stock} </span> </h4>
                     <h3 className="product__price">Price: ${price}</h3>
                     <p className="product__text">{description}</p>
-                    
 
-                    <ItemCount 
+                    
+                    {
+                        isInCart(id)
+                        ?  <p>This Item already is in your Cart <Link className="btn" to="/cart">Buy Now</Link> </p> 
+                        : 
+                        <ItemCount 
                         stock={stock}
                         quantity={quantity}
                         setQuantity={setQuantity}
                         handleAdd={handleAdd}
                     />
+                    }
 
            
                 <h4 className="description__title">Additional Information :</h4>
                     <table className="description__table" border="1px">
+                        <tbody>
                         <tr className="table-row">
                             <th className="table-heading" scope="row">Brand</th>
                             <td className="table-data">{brand}</td>
                         </tr>
 
-                        <tr class="table-row">
-                            <th class="table-heading" scope="row">Power</th>
-                            <td class="table-data">{power}</td>
+                        <tr className="table-row">
+                            <th className="table-heading" scope="row">Power</th>
+                            <td className="table-data">{power}</td>
                         </tr>
-                        <tr class="table-row">
-                            <th class="table-heading" scope="row">Tone</th>
-                            <td class="table-data">{tone}</td>
+                        <tr className="table-row">
+                            <th className="table-heading" scope="row">Tone</th>
+                            <td className="table-data">{tone}</td>
                         </tr>
+                        </tbody>
                     </table>
 
                 </div>

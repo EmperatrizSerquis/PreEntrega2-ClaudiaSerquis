@@ -1,10 +1,9 @@
 import ItemCard from "../ItemCard/ItemCard"
 import CategoryList from "../CategoryList/CategoryList"
-import ServicesListContainer from "../ServicesListContainer/ServicesListContainer"
 
 
-const ItemList = ({items, limit, title}) => {
-    const limitedItems = limit ? items.slice(0,limit) : items
+const ItemList = ({items = [], title}) => {
+
 
     return (
         <div>
@@ -14,12 +13,12 @@ const ItemList = ({items, limit, title}) => {
                 <div className="products__container">
                     <ul className='grid__list'>
                         {
-                            limitedItems.map((prod) => <ItemCard key={prod.id} {...prod}/>)
+                            items.map((prod) => <ItemCard key={prod.id} {...prod}/>)
                         }
                     </ul>
                 </div>
             </div>
-            <ServicesListContainer />
+        
 
         </div>
     )

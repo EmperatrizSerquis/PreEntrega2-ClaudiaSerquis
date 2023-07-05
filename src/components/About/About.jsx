@@ -2,10 +2,44 @@ import InfoContainer from '../InfoContainer/InfoContainer'
 import TitleContainer from '../TitleContainer/TitleContainer'
 import Fancy from "../Fancy/Fancy"
 import Button from "../Button/Button"
-import ServicesListContainer from "../ServicesListContainer/ServicesListContainer"
+
+import { useState, useEffect } from "react"
 
 
 const About = () => {
+
+    const [timedPopup,setTimedPopup ] = useState(false)
+
+
+
+    const openPromo = (e) => {
+        console.log(e)
+    }
+
+    useEffect(() => {
+        const handleScroll = event => {
+          setScrollTop(window.scrollY);
+        };
+      
+        window.addEventListener('scroll', handleScroll);
+      
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+
+    useEffect(() => {
+
+        setTimeout(() => {
+            setTimedPopup(true)
+        }, 3000)
+
+        window.addEventListener('click', openPromo)
+
+        return () => {
+            window.removeEventListener('click', openPromo)
+        }
+    }, [])
 
     return (
        
@@ -22,7 +56,10 @@ const About = () => {
 
             <Button/>
                 
-            <ServicesListContainer />
+
+            {/* <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
+                <h3></h3>
+            </Popup> */}
         </div>
     )
 }

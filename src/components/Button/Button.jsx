@@ -6,7 +6,7 @@ export default function MyApp() {
   return (
     <div className="center">
       <Button variant="contained" color="secondary">
-      <Link  to={"/products"}>SHOP NOW</Link></Button>
+      <Link  to={"/products"}>SEE ALL PRODUCTS AND SHOP NOW</Link></Button>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import CategoryList from '../CategoryList/CategoryList'
+import Loader from '../Loader/Loader'
 import { useState } from 'react'
 
 const CategoryListContainer = () => {
@@ -10,7 +11,7 @@ const CategoryListContainer = () => {
         <div className="container">
             {
                 loading
-                    ? <h2>Loading...</h2>
+                    ? <Loader/>
                     : <CategoryList/>
             }
         </div>

@@ -2,7 +2,7 @@
 
 :root {
     --primary: #9c27b0;
-    --pink: pink;
+    --pink: #cea3eb;
     --white: #fff;
 }
 
@@ -126,9 +126,15 @@ ul li {
     text-transform: capitalize;
 }
 
+.logo {
+    animation: logo-spin infinite 20s linear;
+}
+
 
 @import './components/NavBar/NavBar';
+@import './components/Loader/Loader';
 @import './components/CartWidget/CartWidget';
+@import './components/CartPage/CartPage';
 @import './components/Fancy/Fancy';
 @import './components/Banner/Banner';
 @import './components/ServicesListContainer/ServicesListContainer';
@@ -140,5 +146,7 @@ ul li {
 @import './components/ItemCount/ItemCount';
 @import './components/About/About';
 @import './components/MyButton/MyButton';
+@import './components/Modal/Modal';
+@import './components/Searcher/Searcher';
 @import './components/Footer/Footer';
 

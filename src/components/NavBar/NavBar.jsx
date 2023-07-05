@@ -16,8 +16,9 @@ import blackLogo from '/light-black.svg';
 import CartWidget from "../CartWidget/CartWidget";
 import { Link } from 'react-router-dom';
 
+
 const pages = ['products', 'about', 'contact'];
-const settings = ['Cart', 'Account', 'SignIn', 'Logout'];
+const settings = ['cart', 'account', 'signIn', 'logout'];
 
 function ResponsiveAppBar({ show,  handleShow }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -98,7 +99,7 @@ function ResponsiveAppBar({ show,  handleShow }) {
               </Button>
             ))}
           </Box>
-          <CartWidget  />
+          <CartWidget  show={show} handleShow={handleShow}/>
           <Box sx={{ flexGrow: 0 }}>
           
             <Tooltip title="Open settings">
@@ -125,13 +126,14 @@ function ResponsiveAppBar({ show,  handleShow }) {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography textAlign="center"><Link to={`/${setting}`} >{setting}</Link></Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
         </Toolbar>
       </Container>
+     
     </AppBar>
   );
 }

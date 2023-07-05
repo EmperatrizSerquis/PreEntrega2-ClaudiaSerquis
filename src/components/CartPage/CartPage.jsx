@@ -1,30 +1,41 @@
 import InfoContainer from '../InfoContainer/InfoContainer'
-import TitleContainer from '../TitleContainer/TitleContainer'
 import Fancy from "../Fancy/Fancy"
+import { useContext } from "react"
+import { CartContext } from "../../context/CartContext"
 import Button from "../Button/Button"
-import ServicesListContainer from "../ServicesListContainer/ServicesListContainer"
+import CartList from "../CartList/CartList"
+import CartEmpty from "../CartEmpty/CartEmpty"
 
 
 const CartPage = () => {
+    const { cart } = useContext(CartContext)
 
-    return (
-       
-        <div>
-           <Fancy />
-            <TitleContainer>
-                <h2 className="text-primary">Cart Detail</h2>
-                
-            </TitleContainer> 
-            <InfoContainer>
+
+        return (
+
+            <div>
+                <Fancy />
+
+                {
+
+                    cart.lenght === 0 
+                    ? <CartEmpty/>
+                    : <CartList/>
+
+                }
+
+                <Button/>
+                <InfoContainer>
                 Keep in Touch
                 <p>mail@mail.com</p>
-            </InfoContainer> 
+                </InfoContainer>
             
-            <Button/>
             
-            <ServicesListContainer />
-        </div>
-    )
+            
+            
+            </div>
+        )
+        
 }
 
 export default CartPage

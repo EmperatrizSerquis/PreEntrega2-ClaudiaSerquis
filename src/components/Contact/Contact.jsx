@@ -2,7 +2,7 @@ import InfoContainer from '../InfoContainer/InfoContainer'
 import TitleContainer from '../TitleContainer/TitleContainer'
 import Fancy from "../Fancy/Fancy"
 import Button from "../Button/Button"
-import ServicesListContainer from "../ServicesListContainer/ServicesListContainer"
+
 
 
 const Contact = () => {
@@ -22,7 +22,6 @@ const Contact = () => {
             
             <Button/>
             
-            <ServicesListContainer />
         </div>
     )
 }
