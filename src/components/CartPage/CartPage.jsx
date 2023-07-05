@@ -18,7 +18,7 @@ const CartPage = () => {
 
                 {
 
-                    cart.lenght === 0 
+                    cart.length === 0 
                     ? <CartEmpty/>
                     : <CartList/>
 

@@ -16,18 +16,16 @@
 
         .cart-heading{
             font-size: 20px;
-            font-family: ‘Open Sans’;
             font-weight: 700;
             color: #2F3841;
             }
     
         .cart-action{
-            font-size: 14px;
-            font-family: ‘Open Sans’;
+            font-size: 16px;
             font-weight: 600;
             color: #E44C4C;
             cursor: pointer;
-            border-bottom: 1px solid #E44C4C;
+            padding: 5px;
         }
     }
 
@@ -75,9 +73,9 @@
             }
 
             .counter{
-                width: 15%;
+                width: 20%;
                 display: flex;
-                justify-content: space-between;
+                justify-content: center;
                 align-items: center;
 
                 .cart-btn{

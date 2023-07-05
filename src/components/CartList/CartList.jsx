@@ -5,7 +5,7 @@ import CartItem from "../CartItem/CartItem"
 
 
 const CartList = () => {
-    const { cart, totalAmount, emptyCart, deleteProduct } = useContext(CartContext)
+    const { cart, totalAmount, totalItems, emptyCart } = useContext(CartContext)
 
     return (
         <div>
@@ -16,7 +16,7 @@ const CartList = () => {
             <div className="cart-container">
                 <div className="cart">
                     <h3 className="cart-heading">Shopping Cart</h3>
-                    <h5 className="cart-action">Remove All</h5>
+                    <h5 className="cart-action"><button onClick={emptyCart} className="cart-action">Remove All</button></h5>
                 </div>
 
                 <div className="cart-content">
@@ -30,10 +30,11 @@ const CartList = () => {
                         <div className="total">
                             <div>
                                 <div className="subtotal">Sub-total</div>
-                                <div className="items">2 items</div>
+                                <div className="items">{totalItems()} items</div>
                             </div>
-                            <div className="total-amount">$$$</div>
+                            <div className="total-amount">${totalAmount()}</div>
                         </div>
+                        
                         <button className="button-cart">Checkout</button>
                     </div>
 

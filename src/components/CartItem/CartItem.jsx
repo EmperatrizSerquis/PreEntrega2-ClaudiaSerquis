@@ -1,8 +1,11 @@
 
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-
+import { useContext } from "react"
+import { CartContext } from "../../context/CartContext"
 
 const CartItem = ({id, name, price, brand, img, stock, quantity}) => {
+
+    const { deleteProduct } = useContext(CartContext)
 
     return (
         <div className="cart-item" key={id}>
@@ -18,12 +21,13 @@ const CartItem = ({id, name, price, brand, img, stock, quantity}) => {
                 <DeleteForeverIcon color="secondary" />   </button> 
                         </div>
                         <div className="counter">
-                            <div className="cart-btn">+</div>
+                      
                             <div className="count">{quantity}</div>
-                            <div className="cart-btn">-</div>
+                           
                         </div>
                         <div className="prices">
-                            <div className="amount">{price}</div>
+                        <div className="unit-amount">Unit Price: ${price}</div>
+                            <div className="amount">${price*quantity}</div>
                         </div>
                     </div>
         
