@@ -27,7 +27,7 @@ const Searcher = () => {
 
     return (
         <div className="search-container">
-            <form  onSubmit={handleSubmit}>
+            <form className="search-form"  onSubmit={handleSubmit}>
                 
                 <input type="search" ref={ref} className="search-field" placeholder="Enter your product name..."/>
                 <button onClick={handleReset} type="reset" className="search-reset">X</button>

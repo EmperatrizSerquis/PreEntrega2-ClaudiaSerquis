@@ -23,7 +23,6 @@ const ItemListContainer = () => {
     const list = []
 
     const { showModal, setShowModal } = useContext(ModalContext)
-
     const { categoryId } = useParams()
 
     useEffect(() => {

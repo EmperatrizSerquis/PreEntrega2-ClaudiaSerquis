@@ -7,7 +7,7 @@ const ItemDetail = ({id, name, code, description, brand, price, img, category, s
 
     const { addToCart, isInCart } = useContext(CartContext)
 
-    const qSave = Number(localStorage.getItem('counter')) || 1
+    const qSave = Number(localStorage.getItem('quantity')) || 1
 
     const [quantity, setQuantity] = useState(qSave)
 
@@ -59,18 +59,23 @@ const ItemDetail = ({id, name, code, description, brand, price, img, category, s
                     <h4> IN STOCK: <span> {stock} </span> </h4>
                     <h3 className="product__price">Price: ${price}</h3>
                     <p className="product__text">{description}</p>
-
-                    
-                    {
-                        isInCart(id)
-                        ?  <p>This Item already is in your Cart <Link className="btn" to="/cart">Buy Now</Link> </p> 
-                        : 
-                        <ItemCount 
+                  
+                    <ItemCount 
                         stock={stock}
                         quantity={quantity}
                         setQuantity={setQuantity}
                         handleAdd={handleAdd}
                     />
+
+{
+                        isInCart(id)
+                        && 
+                        <div className="text-center">
+                            <p className="mb-20">This Item is already in your Cart. You have {qSave} items added now. </p> 
+                            <Link className="btn btn-center" to="/cart">Buy Now</Link>
+                        </div>
+                          
+                        
                     }
 
            

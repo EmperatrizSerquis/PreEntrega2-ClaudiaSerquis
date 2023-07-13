@@ -2,10 +2,13 @@ import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
 import TitleContainer from '../TitleContainer/TitleContainer'
 import CartItem from "../CartItem/CartItem"
-
+import { AuthContext } from '../../context/AuthContext'
+import { Link } from 'react-router-dom'
 
 const CartList = () => {
     const { cart, totalAmount, totalItems, emptyCart } = useContext(CartContext)
+
+    const {  user } = useContext(AuthContext)
 
     return (
         <div>
@@ -34,11 +37,16 @@ const CartList = () => {
                             </div>
                             <div className="total-amount">${totalAmount()}</div>
                         </div>
-                        
-                        <button className="button-cart">Checkout</button>
-                    </div>
-
+                    </div>                  
                 </div>
+                {
+                        user.logged ?
+
+                        <button className='button-cart'><Link  to={"/checkout"}>Checkout</Link></button>                       
+                       :
+                       <button className='button-cart'><Link  to={"/register"}>Register & Checkout</Link></button>
+                       
+                      } 
                 
             </div>
 

@@ -6,8 +6,9 @@ import { db } from '../../firebase/config'
 import Fancy from "../Fancy/Fancy"
 import Banner from "../Banner/Banner"
 import Button from "../Button/Button"
-import { ModalContext } from '../../context/ModalContext'
 import { useContext } from 'react'
+import { ModalContext } from '../../context/ModalContext'
+
 import Modal from "../Modal/Modal"
 
 const Home = () => {
@@ -50,7 +51,8 @@ const Home = () => {
             }
 
             <Button  />
-             <Modal open={showModal} modalClose={ () => setShowModal(false) }  />
+            <Modal open={showModal} modalClose={ () => setShowModal(false) }  />
+            
         </div>
     )
 }

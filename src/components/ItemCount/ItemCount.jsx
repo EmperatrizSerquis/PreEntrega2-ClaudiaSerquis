@@ -19,8 +19,6 @@ const ItemCount = ({ stock, quantity, setQuantity,  handleAdd }) => {
     return (
         <div className="counter">
             <button onClick={handleLess} className={quantity === 1 ? "btn btn-action" : "btn btn-shop"} disabled={quantity === 1}>-</button>
-           {/*  VER COMO QUEDA CON BACKTICKS CLASE MIN 1.30 */}
-
             <span className="num">{quantity}</span>
             <button onClick={handlePlus} className="btn btn-action" disabled={quantity === stock}>+</button>
             <button onClick={handleAdd}  className={quantity === stock ? "btn btn-action" : "btn btn-shop"} >Add to Cart</button>

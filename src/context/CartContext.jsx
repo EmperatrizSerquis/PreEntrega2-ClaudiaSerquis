@@ -11,7 +11,20 @@ export const CartProvider = ({children}) => {
     const [showCart, setShowCart] = useState(false)
   
     const addToCart = (item) => {
-      setCart([...cart, item])
+        if(isInCart(item.id)) {           
+            updateQuantity(item.id, item.quantity)
+            
+        } else {
+            setCart([...cart, item])        
+        }     
+    }
+
+    const updateQuantity = (id, quantity) => {
+        console.log(id)
+        const newCart = cart.slice()
+        const item = newCart.find(i => i.id === id)
+        item.quantity = quantity
+        setCart(newCart)
     }
 
     const deleteProduct = (id) => {

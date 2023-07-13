@@ -15,10 +15,14 @@ import myLogo from '/logo.svg';
 import blackLogo from '/light-black.svg';
 import CartWidget from "../CartWidget/CartWidget";
 import { Link } from 'react-router-dom';
+import { useContext } from 'react'
+import { AuthContext } from '../../context/AuthContext'
+import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
 
 
 const pages = ['products', 'about', 'contact'];
-const settings = ['cart', 'account', 'signIn', 'logout'];
+const settings = ['cart', 'account', 'login', 'logout'];
 
 function ResponsiveAppBar({ show,  handleShow }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -38,6 +42,9 @@ function ResponsiveAppBar({ show,  handleShow }) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const { user, logout } = useContext(AuthContext)
+  
 
   return (
     
@@ -104,7 +111,15 @@ function ResponsiveAppBar({ show,  handleShow }) {
           
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              {
+                  user.email ?
+                  <p className="user-nav">Hola<br /> {user.email} <br /> <LogoutIcon onClick={logout} /> </p>
+                  :
+                  <p className="user-nav"> <Link  to="/login"> Login <br /> <LoginIcon  /> </Link> </p>
+                }
                 <Avatar alt="Light" src={blackLogo} />
+               
+               
               </IconButton>
               
             </Tooltip>

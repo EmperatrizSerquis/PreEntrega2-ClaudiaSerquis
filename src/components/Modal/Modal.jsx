@@ -1,5 +1,6 @@
 import React from 'react'
 import pic from '/light.jpg'
+import { Link } from 'react-router-dom'
 
 
 const Modal = ( {open, modalClose} ) => {
@@ -18,7 +19,7 @@ const Modal = ( {open, modalClose} ) => {
                     <p>For your first Purchase</p>
                 </div>
                 <div className="btnContainer">
-                    <button className="btn">Register and Get it NOW</button>
+                    <button className="btn"><Link  to={"/register"}>Register and Get it NOW</Link></button>
                 </div>
             </div>
         </div>    

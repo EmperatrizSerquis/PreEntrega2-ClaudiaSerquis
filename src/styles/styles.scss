@@ -44,6 +44,12 @@ img {
 .w-100 {
     width: 100%;
 }
+.mt-20 {
+    margin-top: 20px;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
 
 .section { padding-block: 80px; }
 
@@ -51,6 +57,10 @@ img {
     padding-inline: 15px;
     max-width: 90%;
     margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -85,7 +95,11 @@ img {
 }
 
 .btn:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
+}
+
+.btn-center {
+    margin: 0 auto;
 }
 
 ul li {
@@ -149,4 +163,5 @@ ul li {
 @import './components/Modal/Modal';
 @import './components/Searcher/Searcher';
 @import './components/Footer/Footer';
+@import './components/Forms/Forms';
 
