@@ -16,12 +16,26 @@ export const AuthContextProvider = ({children}) => {
 
     const login = (values) => {
         signInWithEmailAndPassword(auth, values.email, values.password)
-        .catch(e => setError(true))
+             
+        .catch(error => {
+            const errorCode = error.code 
+            const errorMessage = error.message 
+    
+            setError(true)
+
+        })
     }
+
 
     const register = (values) => {
         createUserWithEmailAndPassword(auth, values.email, values.password)
-        .catch(e => setError(true))
+
+        .catch(error => {
+            const errorCode = error.code 
+            const errorMessage = error.message 
+            setError(true)
+
+        })
     }
 
     const logout = () => {
@@ -32,25 +46,29 @@ export const AuthContextProvider = ({children}) => {
         signInWithPopup(auth, provider)
     }
 
+   
+
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             
             if (user) {
+
+                setError(false)
                 setUser({
                     logged: true,
                     email: user.email
-                })
-                setError(false)
-              
+                })   
+                localStorage.setItem('email', user.email)
 
             } else {
+               
                 setUser({
                     logged: false,
                     email: null
                 })
-                setError(true)
-                
+                localStorage.setItem('email', '')
             }
+
         })
     }, [])
 

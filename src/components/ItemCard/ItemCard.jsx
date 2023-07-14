@@ -22,7 +22,6 @@ const ItemCard = ({id, name, code,  brand, price, img,  category, stock, power, 
                 </div>
                 <div className="btn__wrapper">
                     <Link className="btn__card" to={`/product/${id}`}>See More</Link>
-                    <Link className="btn__cart" to={`/cart/${id}`}>Add to Cart</Link>
                 </div>
             </div>
         </li>

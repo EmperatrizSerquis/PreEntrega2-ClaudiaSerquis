@@ -13,8 +13,9 @@ const LoginPage = () => {
 
     const navigate = useNavigate()
 
-    const [successMessage, setSuccess] = useState(false)
-    const [errorMessage, setErrorMessage] = useState(false)
+    const [successMessage, setSuccess] = useState(null)
+    const [errorMessage, setErrorMessage] = useState(null)
+
 
     const handleInputChange = (e) => {
         setValues({
@@ -25,26 +26,40 @@ const LoginPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        login(values)
-
-        if(user.logged) {
-            e.target.reset()
-            setSuccess(true)
-            setTimeout(() => {
-                setSuccess(false) 
-                navigate(-1)
-            }, 6000)
+       
+        if (values.email.length === 0) {
+            alert("Your Email is required")
             return
         }
-       
-        if (error) {
-            setErrorMessage(true)
-            setTimeout(() => {
-                setErrorMessage(false) 
-            }, 6000)
+        if (values.password.length < 6) {
+            alert("Your Password must have at least 6 characters")
             return
-           
+        }
+
+        login(values)
+       
+        if(user.logged) {
+
+            setSuccess('Bienvenido')
+
+            e.target.reset() 
+            navigate(-2)
+
+            return
+
         } 
+
+        if(error) {
+
+            setErrorMessage('Something was wrong. Go to Register Page if you are not registered yet.')
+            setTimeout(() => {
+                setErrorMessage(null) 
+            }, 6000)
+
+            return
+        }
+       navigate(-1)
+        
     }
 
     return (
@@ -76,13 +91,16 @@ const LoginPage = () => {
                         placeholder='Password'
                         name='password'
                     />
-                     {errorMessage && <p className="error">Something was wrong. Go to Register Page if you are not registered yet.</p>}
+                    { error && errorMessage}
 
-                    {successMessage && <p className="success">WELCOME <b> {values.name}</b>. You will be redirected to the previous page.</p>}
-
+                    { successMessage && successMessage
+                    }
+                    
                     <button className='btn' type='submit'>Submit</button>
                     
                 </form>
+                
+                     
                 <div className="log-links">
                  <button className='btn mt-20' onClick={googleLogin}>Login with Google</button>
                 <div className="link-register">

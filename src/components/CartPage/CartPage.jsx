@@ -9,8 +9,7 @@ import CartEmpty from "../CartEmpty/CartEmpty"
 
 const CartPage = () => {
     const { cart } = useContext(CartContext)
-
-
+    
         return (
 
             <div>

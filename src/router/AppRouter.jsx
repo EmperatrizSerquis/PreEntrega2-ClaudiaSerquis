@@ -15,12 +15,13 @@ import { AuthContext } from "../context/AuthContext"
 import { CartContext } from "../context/CartContext"
 import RegisterPage from "../components/Auth/RegisterPage"
 import Checkout from "../components/Checkout/Checkout"
+import Account from "../components/Account/Account"
 
 
 const AppRouter = () => {
     const { user } = useContext(AuthContext)
     const { cart } = useContext(CartContext)
-
+console.log(user)
     return (
         <BrowserRouter>
                 <>
@@ -36,18 +37,21 @@ const AppRouter = () => {
                     <Route path="*" element={<Navigate to="/"/>}/>
                     <Route path="/login" element={<LoginPage />}/>
                     <Route path="/register" element={<RegisterPage />}/>
+                    {cart.length > 0 && <Route path="/checkout" element={< Checkout/>} />  }
+                    
                     
                   </Routes>
                   </> 
                  
                   {
-                    user.logged &&
+                    user.logged && 
                   <>
                     <Routes>
-                      {cart.lenght > 0 && <Route path="/checkout" element={< Checkout/>} />  }
-                      {/* <Route path="/account" element={< Account/>} /> */}
+                    
+                      <Route path="/account" element={< Account/>} />
                     </Routes>         
-                  </>                                    
+                  </>   
+                        
                   }      
             <ServicesListContainer />
             <TestimonialsContainer />

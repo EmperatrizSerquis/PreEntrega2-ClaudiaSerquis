@@ -3,12 +3,13 @@ import { AuthContext } from '../../context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
+
 const RegisterPage = () => {
 
     const { register, googleLogin, error, user } = useContext(AuthContext)
 
     const [successMessage, setSuccess] = useState(false)
-    const [errorMessage, setErrorMessage] = useState(false)
+    const [errorMessage, setErrorMessage] = useState(null)
     
 
     const navigate = useNavigate()
@@ -34,12 +35,14 @@ const RegisterPage = () => {
         register(values)  
 
         if(user.logged) {
+            setErrorMessage(false) 
             e.target.reset()
+           
             setSuccess(true)
             setTimeout(() => {
-                setSuccess(false) 
+                setSuccess(false)                 
                 navigate("/products")
-            }, 6000)
+            }, 4000)
             return
         }
        
@@ -97,9 +100,9 @@ const RegisterPage = () => {
                     required
                 />
 
-                {errorMessage && <p className="error">Something was wrong. Password must contain at least 6 characters and you should not be previousy registered</p>}
-
                 {successMessage && <p className="success">WELCOME <b> {values.name}</b>. You will be redirected to the previous page.</p>}
+
+                {errorMessage && <p className="error">Something was wrong. Password must contain at least 6 characters and you should not be previousy registered</p>}
 
                 <button className='btn' type='submit'>Submit</button>
                 
@@ -107,7 +110,7 @@ const RegisterPage = () => {
             <div className="log-links">
              <button className='btn mt-20' onClick={googleLogin}>Login with Google</button>
             <div className="link-register">
-                <Link  to="/register"> Are you Registered? Go to Login Now <ArrowOutwardIcon /> </Link>
+                <Link  to="/login"> Are you Registered? Go to Login Now <ArrowOutwardIcon /> </Link>
                 
             </div>
             </div>
